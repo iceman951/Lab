@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import CharacterCard from './CharacterCard'
+
 import _ from 'lodash'
 
 const prepareStateFromWord = (given_word) => {
@@ -35,13 +36,21 @@ export default class WordCard extends Component {
         console.log(`countGuess/wordLenght : ${guess.length}/${this.state.word.length}`)
     }
 
+    restartClick = () => {
+        //window.location.reload();
+        this.setState({guess: [], attempt: this.state.attempt + 1, completed: false})
+    }
+
     render() {
         return (
-            <div>
+            <div className = "Array">
                 { Array.from(this.state.chars).map((c, i) => <CharacterCard value={c} key={i} attempt= {this.state.attempt} activationHandler={this.activationHandler}></CharacterCard>) }
                 <p>{this.state.completed? 'status: Good!' : 'status: Click Character'}</p>
-                <p>{this.attempt}</p>
+                <button onClick={ (e) => this.restartClick(e)}>
+                        Click for Restart
+                </button>
             </div>
+
         )
     }
 }
