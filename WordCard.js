@@ -38,7 +38,7 @@ export default class WordCard extends Component {
 
     restartClick = () => {
         //window.location.reload();
-        this.setState({guess: [], attempt: this.state.attempt + 1, completed: false})
+        this.setState({guess: [], attempt: this.state.attempt + 1 , completed: false})
     }
 
     render() {
@@ -50,6 +50,8 @@ export default class WordCard extends Component {
                 <button onClick={ (e) => this.restartClick(e)}>
                         Click for Restart
                 </button>
+                <h2>{this.state.attempt == 1? 'Round 1': `Round ${this.state.attempt}` }</h2>
+
             </div>
 
         )
