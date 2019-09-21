@@ -45,6 +45,7 @@ export default class WordCard extends Component {
         return (
             <div className = "Array">
                 { Array.from(this.state.chars).map((c, i) => <CharacterCard value={c} key={i} attempt= {this.state.attempt} activationHandler={this.activationHandler}></CharacterCard>) }
+                <p>Typing: {this.state.guess}</p>
                 <p>{this.state.completed? 'status: Good!' : 'status: Click Character'}</p>
                 <button onClick={ (e) => this.restartClick(e)}>
                         Click for Restart
