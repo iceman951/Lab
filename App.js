@@ -7,7 +7,7 @@ class App extends Component {
   render() {
     return (
         <div>
-          <h1>Let's Play Game Card</h1>
+          <h1>Let's Play Shuffle Card Game</h1>
           <WordCard value= 'hello'/>
         </div>
     );

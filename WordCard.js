@@ -28,9 +28,17 @@ export default class WordCard extends Component {
         if(guess.length == this.state.chars.length){
             if(guess.join('').toString() == this.state.word){
                 this.setState({guess: [], completed: true})
+                if(guess.join('').toString() == this.state.word) {
+                    this.setState({guess: [], completed: true})
+                    window.location.reload()
+                }
             }
             else{
                 this.setState({guess: [], attempt: this.state.attempt + 1})
+                if(this.state.attempt > 4) {
+                    window.location.reload()
+                }
+                
             }
         }
         console.log(`countGuess/wordLenght : ${guess.length}/${this.state.word.length}`)
@@ -38,7 +46,10 @@ export default class WordCard extends Component {
 
     restartClick = () => {
         //window.location.reload();
-        this.setState({guess: [], attempt: this.state.attempt + 1 , completed: false})
+        this.setState({guess: [], attempt: this.state.attempt + 1, completed: false})
+        if(this.state.attempt > 4) {
+            window.location.reload()
+        }
     }
 
     render() {
@@ -48,9 +59,9 @@ export default class WordCard extends Component {
                 <p>Typing: {this.state.guess}</p>
                 <p>{this.state.completed? 'status: Good!' : 'status: Click Character'}</p>
                 <button onClick={ (e) => this.restartClick(e)}>
-                        Click for Restart
+                    Click for Restart
                 </button>
-                <h2>{this.state.attempt == 1? 'Round 1': `Round ${this.state.attempt}` }</h2>
+                <h2>{this.state.attempt == 1? 'Round 1/5': `Round ${this.state.attempt}/5` }</h2>
 
             </div>
 
