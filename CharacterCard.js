@@ -1,24 +1,25 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import './App.css'
 
 export default class CharacterCard extends Component {
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
             active: false
-        };
+        }
       }
    
-    activate = () => {
+    activate = () =>{
         if(!this.state.active){
-            this.setState({active: true})
             this.props.activationHandler(this.props.value)
+            this.setState({active:true})
         }
     }
 
     componentDidUpdate(prevProps){
         if(prevProps.attempt != this.props.attempt){
             this.setState({active: false})
-            console.log(`End`)
+            console.log(`try again`)
         }
     }
 
@@ -30,5 +31,5 @@ export default class CharacterCard extends Component {
                 </div>
             )
     }
-   }
+}
    
